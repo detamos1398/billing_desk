@@ -1,19 +1,23 @@
 @echo off
 
-echo "Checking %1 for virtual environment"
-if exist %1\ (
-  echo "Virtual environment already exists"
+set location=%~dp0..
+
+echo Checking %location%\%1 for virtual environment
+if exist %location%\%1\ (
+  echo Virtual environment already exists
 ) else (
-  echo "Creating virtual environment"
-  python3 -m venv %1
-  echo "Created the virtual environment"
+  echo Creating virtual environment
+  python -m venv %location%\%1
+  echo Created the virtual environment
 )
 
-echo "Activating the virtual environment"
-%1\Scripts\activate.bat
+echo Activating the virtual environment using %location%\%1\Scripts\activate.bat
+call %location%\%1\Scripts\activate.bat
 
-if exist requirements.txt (
-  echo "Populating virtual environment using requirements.txt"
-  python3 -m pip install -r requirements.txt
-  echo "Successfully populated the virtual environment"
+if exist %location%\requirements.txt (
+  echo Populating virtual environment using %location%\requirements.txt
+  python -m pip install -r requirements.txt
+  echo Successfully populated the virtual environment
+) else (
+  echo Couldn\'t find %location%\requirements.txt
 )
