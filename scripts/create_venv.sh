@@ -11,7 +11,7 @@ else
     echo "Created the virutal environment";
 fi
 
-"Activating the virtual environment";
+echo "Activating the virtual environment";
 source $1/bin/activate;
 
 
