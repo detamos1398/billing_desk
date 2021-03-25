@@ -1,4 +1,4 @@
-
+@echo off
 
 echo "Checking %1 for virtual environment"
 if exist %1\ (
